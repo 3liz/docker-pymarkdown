@@ -6,13 +6,17 @@ import sys
 import markdown
 
 from markdown.extensions.toc import TocExtension
+from markdown.extensions.fenced_code import FencedCodeExtension
 
 mkin = open(sys.argv[1])
 md = markdown.Markdown(
     extensions=[
-        TocExtension(title='Table of content'),
-        'codehilite',
+        TocExtension(
+            title='Table of content',
+        ),
+        FencedCodeExtension(),
         'meta',
+        'mdx_linkify',
     ],
     output_format="html5")
 gen_html = md.convert(mkin.read())
@@ -23,6 +27,7 @@ if favicon:
     favicon = favicon[0]
 else:
     favicon = 'https://3liz.github.io/favicon.png'
+link_sibling = md_meta.get('sibling')
 
 output = list()
 output.append("""
@@ -42,6 +47,9 @@ output.append("""
  <article>
  <p><a href="../">Up</a></p>
 """.format(title=doc_title, favicon=favicon))
+
+if link_sibling:
+    output.append("""<p><a href="./index.html">Back</a></p>""")
 
 regex_link = r'<a href="(.*).md">'
 result = re.sub(regex_link, r'<a href="\1.html">', gen_html)
