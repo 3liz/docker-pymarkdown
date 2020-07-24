@@ -36,7 +36,7 @@ output.append("""
  <head>
   <meta charset="utf-8"/>
   <title>{title}</title>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
   <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
   <link href="{favicon}" rel="icon" type="image/png" >
  </head>
@@ -57,7 +57,7 @@ output.append(result)
 
 output.append("""
   </article>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>
   <script>
    hljs.initHighlightingOnLoad();
