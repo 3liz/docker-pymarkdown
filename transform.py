@@ -17,6 +17,7 @@ md = markdown.Markdown(
         FencedCodeExtension(),
         'meta',
         'mdx_linkify',
+        'tables',
     ],
     output_format="html5")
 gen_html = md.convert(mkin.read())
