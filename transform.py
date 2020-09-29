@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import warnings
 import re
 import sys
 
@@ -41,8 +42,11 @@ def parse_bool(text):
         return False
 
 
+if md_meta.get('sibling') is not None:
+    warnings.warn('The flag "sibling" has been removed. Switch to "index".')
+
 link_parent_folder = parse_bool(md_meta.get('up'))
-link_current_folder = parse_bool(md_meta.get('index')) or parse_bool(md_meta.get('sibling'))
+link_current_folder = parse_bool(md_meta.get('index'))
 
 output = list()
 output.append("""
