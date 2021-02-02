@@ -67,14 +67,24 @@ output.append("""
 """.format(title=doc_title, favicon=favicon, domain=liz_domain))
 
 if link_parent_folder:
-    output.append("""<p><a href="./../">Up</a></p>""")
+    output.append("""<p><a href="./../">Up</a></p>\n""")
 
 if link_current_folder:
-    output.append("""<p><a href="./">Index</a></p>""")
+    output.append("""<p><a href="./">Index</a></p>\n""")
+
+output.append("\n")
 
 regex_link = r'<a href="(.*).md">'
 result = re.sub(regex_link, r'<a href="\1.html">', gen_html)
 output.append(result)
+
+output.append("\n")
+
+if link_parent_folder:
+    output.append("""<p><a href="./../">Up</a></p>\n""")
+
+if link_current_folder:
+    output.append("""<p><a href="./">Index</a></p>\n""")
 
 output.append("""
   </article>
